@@ -11,10 +11,6 @@ export default function Incidents() {
   const [total, setTotal] = useState(0);
   const msg = "Seu IPTV está proximo do vencimento, realize o pagamento para não ficar sem o serviço!"
 
-  useEffect(() => {
-    findContacts();
-  },[]);
-
   async function findContacts(){
     
     const { status } = await Contacts.requestPermissionsAsync();
@@ -57,6 +53,11 @@ export default function Incidents() {
     )
   }
 
+  
+  useEffect(() => {
+    findContacts();
+  },[]);
+  
   return (
     <View style={styles.container}>
         <View style={styles.header}>
