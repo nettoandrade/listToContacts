@@ -22,13 +22,14 @@ export default StyleSheet.create({
     button: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom:10
     },
     textbutton: {
         color:'#E02041'
     },
     contactlist:{
-        marginTop:32
+        marginTop:20
     },
     contact:{
         flexDirection: 'row',
@@ -38,5 +39,10 @@ export default StyleSheet.create({
     },
     textcontact:{
         
+    },
+    viewNumber: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end'
     }
 });
