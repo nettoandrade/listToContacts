@@ -6,18 +6,35 @@ export default StyleSheet.create({
         flex: 1,
         paddingHorizontal: 24,
         paddingTop: Constants.statusBarHeight + 20,
-        backgroundColor: '#FFF'
+        backgroundColor: '#CCC'
     },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+    },
+    send:{
+        color:'#616161',
+        textShadowRadius: 10        
+    },
+    image: {
+        width: 100,
+        height: 100,
+        resizeMode: 'contain'        
     },
     title:{
         fontSize: 30,
         marginBottom: 10,
         marginTop:30,
-        color: '#13131a'
+        color: '#FFF',
+        textAlign:'center',
+        textShadowRadius: 30
+    },
+    button1: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom:10
     },
     button: {
         flexDirection: 'row',
@@ -26,10 +43,10 @@ export default StyleSheet.create({
         marginBottom:10
     },
     textbutton: {
-        color:'#E02041'
+        color:'#616161'        
     },
     contactlist:{
-        marginTop:20
+        marginTop:20        
     },
     contact:{
         flexDirection: 'row',
@@ -37,8 +54,7 @@ export default StyleSheet.create({
         color:'#E02041',
         marginTop: 5
     },
-    textcontact:{
-        
+    textContact:{
     },
     viewNumber: {
         flexDirection: 'row',

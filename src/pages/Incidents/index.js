@@ -11,7 +11,7 @@ export default function Incidents() {
   const [total, setTotal] = useState(0);
   const msg = "Seu IPTV está proximo do vencimento, realize o pagamento para não ficar sem o serviço!"
 
-  async function findContacts(){
+  async function findContacts(stringFilter){
     
     const { status } = await Contacts.requestPermissionsAsync();
       if (status === 'granted') {
@@ -19,10 +19,16 @@ export default function Incidents() {
 
         if (data.length > 0) {
           //console.log(data);
-          const valores = data.filter((obj) => { return obj.name.includes('IPTV') && obj.phoneNumbers});
-          valores.sort()
+          let valores = {};
+          if (stringFilter) {
+            valores = data.filter((obj) => { return obj.name.includes('IPTV') && obj.phoneNumbers && obj.name.includes(stringFilter)});
+          } else {
+            valores = data.filter((obj) => { return obj.name.includes('IPTV') && obj.phoneNumbers && !obj.name.includes('Off')});
+          }
+          valores.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
           setContacts(valores);
-          setTotal(contacts.length);
+          setTotal(valores.length);
+          //console.log(valores);
         }
       }
   }
@@ -47,13 +53,13 @@ export default function Incidents() {
     <Text style={styles.textContact}>{contact.name}</Text>  
     <View style={styles.viewNumber}>              
       <Text style={styles.textContact}>{contact.phoneNumbers[0].number}</Text>
-      <Feather name="arrow-up-right" size={20} color="#E02041"/>
+      <Feather name="send" size={20} style={styles.send} />
     </View>          
     </TouchableOpacity>
     )
   }
 
-  
+  //Utilizado para executar função ao realizar abertura do APP
   useEffect(() => {
     findContacts();
   },[]);
@@ -61,12 +67,19 @@ export default function Incidents() {
   return (
     <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={icon}/>
+          <Image style={styles.image} source={icon}/>
           <Text>Total {total} de contatos.</Text>
+          <TouchableOpacity style={styles.button1}  onPress={() => findContacts('Off')}>
+            <Feather name="sliders" size={20} style={styles.send} />
+          </TouchableOpacity>                    
         </View>        
         <Text style={styles.title}>Listar Contatos</Text>
-        <TouchableOpacity style={styles.button}  onPress={() => findContacts()}>
+        <TouchableOpacity style={styles.button1}  onPress={() => findContacts()}>
           <Text style={styles.textbutton}>#Listar Contatos IPTV</Text>
+          <Feather name="align-center" size={20} color="#E02041"/>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button1}  onPress={() => findContacts('Off')}>
+          <Text style={styles.textbutton}>#Listar Contatos IPTV OFF</Text>
           <Feather name="align-center" size={20} color="#E02041"/>
         </TouchableOpacity>
         <FlatList
