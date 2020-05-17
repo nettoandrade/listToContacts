@@ -13,7 +13,8 @@ export default function Config({ navigation }) {
 
   async function getByItemStorage(key){
     try {
-      const value = await AsyncStorage.getItem(key);
+      let value = ''; 
+      value = await AsyncStorage.getItem(key);
       if (value !== null) {
         // We have data!!
         return setvaluekey(value);
@@ -37,11 +38,11 @@ export default function Config({ navigation }) {
 
   return (
     <View style={styles.container}>
-        <View style={styles.header}>
-            <Text>Configuração</Text>
+        <View >
+            <Text style={styles.header}>Configuração</Text>
         </View>
+        <Text style={styles.textLabel}>Palavra Chave! (Filtro)</Text>
         <TextInput style={styles.textInput}
-        placeholder="teste"
         onChangeText={(text) => setvaluekey(text)}  
         value={key}
         />

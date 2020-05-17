@@ -18,6 +18,9 @@ export default function Incidents({ navigation }) {
       if (value !== null) {
         // We have data!!
         return settextFilter(value);
+      } else {
+        navigation.navigate('Config')
+        return 
       }
     } catch (error) {
       console.log("Error retrieving data" + error);

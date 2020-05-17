@@ -11,13 +11,25 @@ export default StyleSheet.create({
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',        
+        fontSize: 30,
+        marginBottom: 10,
+        marginTop:30,
+        color: '#FFF',
+        textAlign:'center',
+        textShadowRadius: 30
     },
     button: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         marginTop: 20
+    },
+    textLabel: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: 10
     },
     textInput: {
         flexDirection: 'row',
@@ -26,6 +38,6 @@ export default StyleSheet.create({
         height: 40, 
         borderColor: 'gray', 
         borderWidth: 1,
-        marginTop: 20
+        marginTop: 10
     }
 });
